@@ -41,8 +41,14 @@ class _HomePageState extends State<HomePage> {
         child: ListView.builder(
           itemCount: users?.length,
           itemBuilder: (context, index) {
-            return Container(
-              child: Text(users![index].name),
+            return Column(
+              children: [
+                ListTile(
+                  title: Text(users![index].name),
+                  subtitle: Text(users![index].email),
+                ),
+                const Divider()
+              ],
             );
           },
         ),
