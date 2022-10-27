@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_front/services/userServices.dart';
+import 'package:flutter_front/widgets/nav_bar.dart';
 
 import '../models/user.dart';
 
@@ -33,8 +34,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const DrawerScreen(),
       appBar: AppBar(
-        title: const Text('Users List'), 
+        title: const Text('Fluterrr'), 
       ),
       body: Visibility(
         visible: isLoaded,
