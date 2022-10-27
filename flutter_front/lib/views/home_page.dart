@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_front/services/userServices.dart';
-import 'package:flutter_front/widgets/nav_bar.dart';
+import 'package:flutter_front/widgets/drawer.dart';
 
 import '../models/user.dart';
 
@@ -40,6 +40,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Visibility(
         visible: isLoaded,
+        replacement:const Center(
+          child: CircularProgressIndicator(),
+        ),
         child: ListView.builder(
           itemCount: users?.length,
           itemBuilder: (context, index) {
@@ -53,9 +56,6 @@ class _HomePageState extends State<HomePage> {
               ],
             );
           },
-        ),
-        replacement:const Center(
-          child: CircularProgressIndicator(),
         ),
       ),
     );
