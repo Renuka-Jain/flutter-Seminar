@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_front/services/userServices.dart';
-import 'package:flutter_front/widgets/drawer.dart';
+import 'package:flutter_front/views/deleteUser_page.dart';
 
 import '../models/user.dart';
 
@@ -17,8 +17,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState(){
     super.initState();
-
-
     getData();
   }
 
@@ -34,9 +32,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const DrawerScreen(),
       appBar: AppBar(
-        title: const Text('Fluterrr'), 
+        title: const Text('Seminari 10 Fluter LLISTAT'),
+        backgroundColor: Colors.deepPurple[300], 
       ),
       body: Visibility(
         visible: isLoaded,
@@ -51,6 +49,10 @@ class _HomePageState extends State<HomePage> {
                 ListTile(
                   title: Text(users![index].name),
                   subtitle: Text(users![index].email),
+                  onTap: () {
+                    Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => DeleteUser()));
+                  },
                 ),
                 const Divider()
               ],
