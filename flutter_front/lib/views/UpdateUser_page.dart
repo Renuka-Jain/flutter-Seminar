@@ -4,20 +4,21 @@ import 'package:flutter_front/services/userServices.dart';
 
 import '../models/user.dart';
 
-class DeleteUser extends StatefulWidget {
-  const DeleteUser({super.key});
+class UpdateUser extends StatefulWidget {
+  const UpdateUser({super.key});
 
   @override
-  State<DeleteUser> createState() => _DeleteUser();
+  State<UpdateUser> createState() => _UpdateUser();
 }
 
-class _DeleteUser extends State<DeleteUser> {
+class _UpdateUser extends State<UpdateUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Seminari 10 Fluter DELETEUSER'),
+        title: const Text('Seminari 10 Fluter UpdateUSER'),
         backgroundColor: Colors.deepPurple[300], 
+        
       ),
   );
 

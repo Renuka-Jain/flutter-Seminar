@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_front/services/userServices.dart';
-import 'package:flutter_front/views/deleteUser_page.dart';
+import 'package:flutter_front/views/UpdateUser_page.dart';
 
 import '../models/user.dart';
+import '../widgets/drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,9 +30,14 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  deleteU(String name) async {
+    await UserServices().deleteUsers(name);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const DrawerScreen(),
       appBar: AppBar(
         title: const Text('Seminari 10 Fluter LLISTAT'),
         backgroundColor: Colors.deepPurple[300], 
@@ -44,18 +50,38 @@ class _HomePageState extends State<HomePage> {
         child: ListView.builder(
           itemCount: users?.length,
           itemBuilder: (context, index) {
-            return Column(
-              children: [
+            return Card(
+              color: Colors.deepPurple[100],
+              child:
                 ListTile(
                   title: Text(users![index].name),
                   subtitle: Text(users![index].email),
-                  onTap: () {
-                    Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => DeleteUser()));
-                  },
+                  trailing: Container(
+                    width: 120,
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(child:IconButton(
+                        icon: const Icon(Icons.delete), 
+                        onPressed: () { 
+                          deleteU(users![index].name.toString());
+                          setState(() {users!.removeAt(index);});
+                        },
+                      )),
+                     
+                      Expanded(child:IconButton(
+                        icon: const Icon(Icons.edit), 
+                        onPressed: () { 
+                          Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => const UpdateUser()));
+                         }, 
+                       ),
+                    ),
+                    
+                      ],
+                    )
+
+                  ),
                 ),
-                const Divider()
-              ],
             );
           },
         ),

@@ -1,6 +1,4 @@
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_front/views/home_page.dart';
 import 'package:flutter_front/views/firstpage.dart';
@@ -11,17 +9,14 @@ class DrawerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Seminari 10 Fluter DRAWER'),
-        backgroundColor: Color.fromARGB(255, 141, 159, 240),
-      ),
-      drawer: Drawer(
+    return SafeArea(
+      child: SizedBox(
+      child: Drawer(
         child: Container(
-          color: Color.fromARGB(255, 146, 166, 183),
+          color: const Color.fromARGB(255, 146, 166, 183),
           child: ListView(
             children: [
-              DrawerHeader(
+              const DrawerHeader(
                 child: Center(
                   child: Text(
                       'P A G E S',
@@ -30,39 +25,38 @@ class DrawerScreen extends StatelessWidget {
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.home),
-                title: Text(
+                leading: const Icon(Icons.home),
+                title: const Text(
                   'Page 1'
                 ),
                 onTap: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => FirstPage()));
+                    MaterialPageRoute(builder: (context) => const FirstPage()));
                 },
               ),
               ListTile(
-                leading: Icon(Icons.home),
-                title: Text (
+                leading: const Icon(Icons.home),
+                title: const Text (
                   'List users',
                 ),
                 onTap: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => HomePage()));
+                    MaterialPageRoute(builder: (context) => const HomePage()));
                 },
               ),
               ListTile(
-                leading: Icon(Icons.home),
-                title: Text (
+                leading: const Icon(Icons.home),
+                title: const Text (
                   'User Account: Login & Register',
                 ),
                 onTap: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => AccountPage()));
+                    MaterialPageRoute(builder: (context) => const AccountPage()));
                 },
               ),
-            ],
-          ),
+          ],
         ),
-      ),
-    );
+      ))
+    ));
   }
 }

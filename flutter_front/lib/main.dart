@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_front/views/home_page.dart';
+import 'package:flutter_front/views/firstpage.dart';
 import 'package:flutter_front/widgets/drawer.dart';
 
 
@@ -12,13 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const DrawerScreen(),
-      
+    return const MaterialApp(
+      /*home: Scaffold(
+        drawer: DrawerScreen(),
+        body: FirstPage(),
+      ),*/
+      home:FirstPage()
     );
   }
 }
